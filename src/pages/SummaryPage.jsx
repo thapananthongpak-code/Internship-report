@@ -1,10 +1,76 @@
-import { SingleImageUpload, GalleryUpload } from '../components/ImageUpload'
+import { useState, useRef } from 'react'
+import { useToast } from '../components/Toast'
+
+// ════════════════════════════════════════════
+//  แก้ไขข้อมูลสรุปผลตรงนี้
+// ════════════════════════════════════════════
+const STATS = [
+  { num: '7',  label: 'สัปดาห์' },
+  { num: '35', label: 'วันทำงาน' },
+  { num: '–',  label: 'โปรเจกต์' },   // ← จำนวนโปรเจกต์
+  { num: '–',  label: 'ทักษะใหม่' },  // ← จำนวนทักษะ
+]
+
+function DocAttach() {
+  const [files, setFiles] = useState([])
+  const inputRef = useRef()
+  const toast = useToast()
+
+  function handleAdd(e) {
+    const added = Array.from(e.target.files)
+    if (!added.length) return
+    setFiles(prev => [...prev, ...added.map(f => ({ name: f.name, size: f.size, url: URL.createObjectURL(f) }))])
+    toast?.(`เพิ่ม ${added.length} ไฟล์สำเร็จ`, 'success')
+    e.target.value = ''
+  }
+
+  function handleRemove(i) {
+    setFiles(prev => prev.filter((_, idx) => idx !== i))
+    toast?.('ลบไฟล์แล้ว', 'info')
+  }
+
+  function fmt(bytes) {
+    if (bytes < 1024) return bytes + ' B'
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB'
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB'
+  }
+
+  return (
+    <div>
+      <div className="doc-attach-area" onClick={() => inputRef.current?.click()}>
+        <input ref={inputRef} type="file" multiple accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.zip,.png,.jpg,.jpeg" onChange={handleAdd} />
+        <div className="doc-attach-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--gray-500)' }}>
+            <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+          </svg>
+        </div>
+        <p className="doc-attach-text">คลิกเพื่อเลือกไฟล์ หรือลากมาวางที่นี่</p>
+        <p className="doc-attach-hint">PDF, Word, PowerPoint, Excel, รูปภาพ — รองรับหลายไฟล์</p>
+      </div>
+
+      {files.length > 0 && (
+        <div className="doc-file-list">
+          {files.map((f, i) => (
+            <div key={i} className="doc-file-item">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, color: 'var(--gray-400)' }}>
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+              </svg>
+              <a href={f.url} target="_blank" rel="noreferrer" className="doc-file-name" style={{ color: 'var(--primary)', textDecoration: 'none' }}>{f.name}</a>
+              <span className="doc-file-size">{fmt(f.size)}</span>
+              <button className="doc-file-del" onClick={() => handleRemove(i)}>×</button>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
 
 export default function SummaryPage() {
   return (
     <div className="page-body">
       <div className="cover-hero animate-scale-in">
-        <div className="cover-deco"></div>
         <span className="cover-tag">สรุปผลการฝึกงาน</span>
         <h1 className="cover-title">สรุปผลการฝึกประสบการณ์<br/>วิชาชีพ</h1>
         <p className="cover-subtitle">บริษัท ศิริซอฟต์ จำกัด — ระยะเวลา 7 สัปดาห์</p>
@@ -12,13 +78,8 @@ export default function SummaryPage() {
       </div>
 
       <div className="summary-stats animate-fade-up delay-100">
-        {[
-          { num: '7',  label: 'สัปดาห์',   cls: '' },
-          { num: '35', label: 'วันทำงาน',  cls: '' },
-          { num: '–',  label: 'โปรเจกต์',  cls: 'orange' },
-          { num: '–',  label: 'ทักษะใหม่', cls: 'green' },
-        ].map((s, i) => (
-          <div key={i} className={`stat-card${s.cls ? ` ${s.cls}` : ''}`}>
+        {STATS.map((s, i) => (
+          <div key={i} className="stat-card">
             <div className="stat-num">{s.num}</div>
             <div className="stat-label">{s.label}</div>
           </div>
@@ -28,102 +89,13 @@ export default function SummaryPage() {
       <div className="card animate-fade-up delay-200">
         <div className="card-header">
           <div>
-            <div className="card-header-title">รูปภาพสรุป / รูปหมู่</div>
-            <div className="card-header-sub">รูปถ่ายร่วมกับทีมหรือบรรยากาศวันสุดท้าย</div>
+            <div className="card-header-title">แนบเอกสารรายงาน</div>
+            <div className="card-header-sub">อัปโหลดไฟล์รายงาน เอกสารประกอบ หรือรูปภาพ</div>
           </div>
         </div>
         <div className="card-body">
-          <SingleImageUpload label="อัปโหลดรูปภาพสรุปการฝึกงาน" />
-          <div style={{ marginTop: '18px' }}>
-            <p className="field-label" style={{ marginBottom: '8px' }}>รูปภาพเพิ่มเติม</p>
-            <GalleryUpload label="เพิ่มรูปภาพ" />
-          </div>
+          <DocAttach />
         </div>
-      </div>
-
-      <div className="card animate-fade-up delay-200">
-        <div className="card-header">
-          <div><div className="card-header-title">สรุปกิจกรรมตลอดการฝึกงาน</div></div>
-        </div>
-        <div className="card-body">
-          <div className="activity-ph">[กรอกสรุปภาพรวมของกิจกรรมและงานที่ทำตลอด 7 สัปดาห์]</div>
-        </div>
-      </div>
-
-      <div className="card animate-fade-up delay-300">
-        <div className="card-header">
-          <div><div className="card-header-title">ทักษะและความรู้ที่ได้รับ</div></div>
-        </div>
-        <div className="card-body">
-          <p className="field-label" style={{ marginBottom: '10px' }}>ทักษะด้านเทคนิค (Technical Skills)</p>
-          <div className="skill-tags" style={{ marginBottom: '20px' }}>
-            {['[ทักษะ 1]','[ทักษะ 2]','[ทักษะ 3]','[ทักษะ 4]'].map((s, i) => (
-              <span key={i} className="skill-tag blue">{s}</span>
-            ))}
-          </div>
-          <p className="field-label" style={{ marginBottom: '10px' }}>ทักษะการทำงาน (Soft Skills)</p>
-          <div className="skill-tags">
-            {['[ทักษะ 1]','[ทักษะ 2]','[ทักษะ 3]'].map((s, i) => (
-              <span key={i} className="skill-tag soft">{s}</span>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="card animate-fade-up delay-300">
-        <div className="card-header">
-          <div><div className="card-header-title">ปัญหาที่พบและบทเรียน</div></div>
-        </div>
-        <div className="card-body">
-          <div className="info-grid">
-            {[
-              { label: 'ปัญหาและอุปสรรคหลัก',     ph: '[กรอกปัญหาหลักที่พบตลอดการฝึกงาน]' },
-              { label: 'วิธีการแก้ไขและบทเรียน',   ph: '[กรอกวิธีแก้ไขและสิ่งที่เรียนรู้]' },
-            ].map((f, i) => (
-              <div key={i} className="info-field full">
-                <span className="field-label">{f.label}</span>
-                <div className="field-value ph">{f.ph}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="card animate-fade-up delay-400">
-        <div className="card-header">
-          <div><div className="card-header-title">ความประทับใจและข้อเสนอแนะ</div></div>
-        </div>
-        <div className="card-body">
-          <div className="info-grid">
-            {[
-              { label: 'ความประทับใจในการฝึกงาน',       ph: '[กรอกความรู้สึกและความประทับใจโดยรวม]' },
-              { label: 'ข้อเสนอแนะต่อองค์กร',            ph: '[กรอกข้อเสนอแนะที่เป็นประโยชน์ต่อบริษัท]' },
-              { label: 'ข้อเสนอแนะต่อสถาบันการศึกษา',   ph: '[กรอกข้อเสนอแนะต่อมหาวิทยาลัย]' },
-            ].map((f, i) => (
-              <div key={i} className="info-field full">
-                <span className="field-label">{f.label}</span>
-                <div className="field-value ph">{f.ph}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="card animate-fade-up delay-400">
-        <div className="card-header">
-          <div><div className="card-header-title">บทสรุป</div></div>
-        </div>
-        <div className="card-body">
-          <div className="activity-ph">[กรอกบทสรุปประสบการณ์การฝึกงานโดยรวม สิ่งที่จะนำไปใช้ในการทำงานจริง]</div>
-        </div>
-      </div>
-
-      <div className="thankyou-banner animate-fade-up delay-500">
-        <div className="thankyou-title">ขอบคุณ Sirisoft Co., Ltd.</div>
-        <p className="thankyou-desc">
-          ขอขอบพระคุณทีมงานทุกท่านที่ให้โอกาสและช่วยเหลือตลอดระยะเวลาการฝึกงาน<br/>
-          ประสบการณ์ที่ได้รับจะเป็นพื้นฐานสำคัญในการประกอบวิชาชีพในอนาคต
-        </p>
       </div>
     </div>
   )

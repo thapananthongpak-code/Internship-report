@@ -1,6 +1,10 @@
 import { SingleImageUpload, GalleryUpload } from '../components/ImageUpload'
 import WeekProgress from '../components/WeekProgress'
+import { WEEK_DATES } from '../data/reportData'
 
+// ════════════════════════════════════════════
+//  แก้ชื่อหัวข้อแต่ละสัปดาห์ตรงนี้
+// ════════════════════════════════════════════
 const weekConfig = {
   week1: { num: 1, title: 'เริ่มต้นการฝึกงาน',        theme: 'ปรับตัวและเรียนรู้ระบบขององค์กร' },
   week2: { num: 2, title: 'เรียนรู้ระบบและเครื่องมือ', theme: 'ศึกษา Tech Stack และ Workflow ของทีม' },
@@ -29,8 +33,7 @@ export default function WeekPage({ weekId }) {
         </div>
         <div className="week-date-pill">
           <div className="dl">ช่วงเวลา</div>
-          <div className="dv">[วัน/เดือน/ปี]</div>
-          <div className="dv" style={{ marginTop: '2px', fontSize: '12px', color: 'rgba(255,255,255,0.6)' }}>ถึง [วัน/เดือน/ปี]</div>
+          <div className="dv">{WEEK_DATES[weekId] ?? '–'}</div>
         </div>
       </div>
 
