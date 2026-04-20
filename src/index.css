@@ -562,6 +562,35 @@ body {
 .upload-overlay-btn.danger { color: #ef4444; }
 .upload-overlay-btn:hover { background: var(--gray-100); transform: translateY(-1px); }
 
+/* Upload action row & path input */
+.upload-actions-row { display: flex; gap: 8px; justify-content: center; margin-top: 14px; flex-wrap: wrap; }
+.upload-btn-label.secondary {
+  background: white; color: var(--primary); border: 1.5px solid var(--primary-light);
+}
+.upload-btn-label.secondary:hover { background: var(--primary-muted); }
+
+.path-input-row {
+  display: flex; gap: 8px; margin-top: 12px; width: 100%; max-width: 480px; margin-left: auto; margin-right: auto;
+}
+.path-input {
+  flex: 1; padding: 8px 12px; border: 1.5px solid var(--gray-300); border-radius: 8px;
+  font-size: 13px; font-family: 'Sarabun', monospace; color: var(--gray-700);
+  outline: none; transition: border-color var(--transition); background: white;
+}
+.path-input:focus { border-color: var(--primary-light); }
+.path-submit-btn {
+  padding: 8px 16px; background: var(--primary); color: white; border: none;
+  border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: background var(--transition); white-space: nowrap;
+}
+.path-submit-btn:hover { background: var(--primary-light); }
+.path-toggle-btn {
+  background: none; border: 1.5px dashed var(--gray-300); color: var(--gray-500);
+  border-radius: 8px; padding: 6px 14px; font-size: 12.5px; font-weight: 600;
+  cursor: pointer; font-family: inherit; transition: all var(--transition);
+}
+.path-toggle-btn:hover { border-color: var(--primary-light); color: var(--primary); background: var(--primary-muted); }
+
 /* Gallery */
 .img-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(156px, 1fr)); gap: 10px; margin-top: 14px; }
 .img-tile {
