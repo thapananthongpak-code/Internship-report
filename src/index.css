@@ -702,6 +702,37 @@ body {
 .thankyou-title { font-size: 20px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.3px; position: relative; z-index: 1; }
 .thankyou-desc { font-size: 14px; color: rgba(255,255,255,0.78); max-width: 480px; margin: 0 auto; line-height: 1.6; position: relative; z-index: 1; }
 
+/* ─── Mentor Profile ──────────────────────────────── */
+.mentor-profile {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.mentor-avatar-wrap {
+  position: sticky;
+  top: 80px;
+}
+.mentor-detail { flex: 1; }
+
+.mentor-bio-section { }
+.mentor-bio-box {
+  background: var(--gray-50);
+  border: 1.5px solid var(--gray-200);
+  border-left: 3px solid var(--primary-light);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  transition: border-color var(--transition);
+}
+.mentor-bio-box:hover { border-left-color: var(--primary); border-color: rgba(0,48,135,0.15); }
+.mentor-bio-text { font-size: 14.5px; color: var(--gray-700); line-height: 1.75; }
+.mentor-bio-text.ph { color: var(--gray-400); font-style: italic; }
+
+@media (max-width: 680px) {
+  .mentor-profile { grid-template-columns: 1fr; }
+  .mentor-avatar-wrap { max-width: 240px; position: static; }
+}
+
 /* ─── Misc Utilities ──────────────────────────────── */
 .hamburger {
   display: none; background: none; border: none; cursor: pointer;
