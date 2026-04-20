@@ -2,13 +2,13 @@ import { SingleImageUpload, GalleryUpload } from '../components/ImageUpload'
 import WeekProgress from '../components/WeekProgress'
 
 const weekConfig = {
-  week1: { num: 1, title: 'เริ่มต้นการฝึกงาน',         theme: 'ปรับตัวและเรียนรู้ระบบขององค์กร' },
-  week2: { num: 2, title: 'เรียนรู้ระบบและเครื่องมือ',  theme: 'ศึกษา tech stack และ workflow ของทีม' },
-  week3: { num: 3, title: 'ลงมือปฏิบัติงาน',           theme: 'เริ่มรับงานจริงจากพี่เลี้ยง' },
-  week4: { num: 4, title: 'พัฒนาทักษะการทำงาน',        theme: 'ฝึกทักษะเพิ่มเติมและแก้ปัญหาที่ซับซ้อนขึ้น' },
-  week5: { num: 5, title: 'งานโปรเจกต์หลัก',           theme: 'ดำเนินงานโปรเจกต์ที่ได้รับมอบหมาย' },
-  week6: { num: 6, title: 'ทดสอบและปรับปรุงงาน',        theme: 'QA, testing และ code review' },
-  week7: { num: 7, title: 'สรุปและส่งมอบงาน',           theme: 'ปิดงานและนำเสนอผลลัพธ์ต่อทีม' },
+  week1: { num: 1, title: 'เริ่มต้นการฝึกงาน',        theme: 'ปรับตัวและเรียนรู้ระบบขององค์กร' },
+  week2: { num: 2, title: 'เรียนรู้ระบบและเครื่องมือ', theme: 'ศึกษา Tech Stack และ Workflow ของทีม' },
+  week3: { num: 3, title: 'ลงมือปฏิบัติงาน',          theme: 'เริ่มรับงานจริงจากพนักงานพี่เลี้ยง' },
+  week4: { num: 4, title: 'พัฒนาทักษะการทำงาน',       theme: 'ฝึกทักษะเพิ่มเติมและแก้ปัญหาที่ซับซ้อนขึ้น' },
+  week5: { num: 5, title: 'งานโปรเจกต์หลัก',          theme: 'ดำเนินงานโปรเจกต์ที่ได้รับมอบหมาย' },
+  week6: { num: 6, title: 'ทดสอบและปรับปรุงงาน',       theme: 'QA, Testing และ Code Review' },
+  week7: { num: 7, title: 'สรุปและส่งมอบงาน',          theme: 'ปิดงานและนำเสนอผลลัพธ์ต่อทีม' },
 }
 
 export default function WeekPage({ weekId }) {
@@ -18,7 +18,6 @@ export default function WeekPage({ weekId }) {
     <div className="page-body">
       <WeekProgress currentWeek={cfg.num} />
 
-      {/* Week Hero */}
       <div className="week-hero animate-fade-up">
         <div className="week-badge">
           <span className="wl">Week</span>
@@ -35,10 +34,8 @@ export default function WeekPage({ weekId }) {
         </div>
       </div>
 
-      {/* รูปภาพ */}
       <div className="card animate-fade-up delay-100">
         <div className="card-header">
-          <div className="card-header-icon">📸</div>
           <div>
             <div className="card-header-title">รูปภาพประจำสัปดาห์ที่ {cfg.num}</div>
             <div className="card-header-sub">ลากรูปมาวางหรือคลิกเพื่อเลือกไฟล์</div>
@@ -53,10 +50,8 @@ export default function WeekPage({ weekId }) {
         </div>
       </div>
 
-      {/* กิจกรรม */}
       <div className="card animate-fade-up delay-200">
         <div className="card-header">
-          <div className="card-header-icon">📋</div>
           <div>
             <div className="card-header-title">กิจกรรมที่ทำในสัปดาห์นี้</div>
             <div className="card-header-sub">สรุปงานและกิจกรรมที่ได้ดำเนินการ</div>
@@ -74,10 +69,8 @@ export default function WeekPage({ weekId }) {
         </div>
       </div>
 
-      {/* ความรู้ที่ได้รับ */}
       <div className="card animate-fade-up delay-300">
         <div className="card-header">
-          <div className="card-header-icon">💡</div>
           <div>
             <div className="card-header-title">ความรู้และทักษะที่ได้รับ</div>
             <div className="card-header-sub">สิ่งที่เรียนรู้จากการปฏิบัติงาน</div>
@@ -95,13 +88,9 @@ export default function WeekPage({ weekId }) {
         </div>
       </div>
 
-      {/* ปัญหาและแก้ไข */}
       <div className="card animate-fade-up delay-300">
         <div className="card-header">
-          <div className="card-header-icon">🔧</div>
-          <div>
-            <div className="card-header-title">ปัญหาที่พบและแนวทางแก้ไข</div>
-          </div>
+          <div><div className="card-header-title">ปัญหาที่พบและแนวทางแก้ไข</div></div>
         </div>
         <div className="card-body">
           <div className="info-grid">
@@ -117,10 +106,8 @@ export default function WeekPage({ weekId }) {
         </div>
       </div>
 
-      {/* ตารางงาน */}
       <div className="card animate-fade-up delay-400">
         <div className="card-header">
-          <div className="card-header-icon">📝</div>
           <div>
             <div className="card-header-title">งานที่ได้รับมอบหมาย</div>
             <div className="card-header-sub">รายการงานและสถานะ</div>
@@ -130,15 +117,15 @@ export default function WeekPage({ weekId }) {
           <table className="report-table">
             <thead>
               <tr>
-                {['#','ชื่องาน / Task','สถานะ','หมายเหตุ'].map(h => <th key={h}>{h}</th>)}
+                {['#', 'ชื่องาน / Task', 'สถานะ', 'หมายเหตุ'].map(h => <th key={h}>{h}</th>)}
               </tr>
             </thead>
             <tbody>
-              {[1,2,3].map(i => (
+              {[1, 2, 3].map(i => (
                 <tr key={i}>
                   <td>{i}</td>
                   <td style={{ color: 'var(--gray-400)', fontStyle: 'italic' }}>[ชื่องาน]</td>
-                  <td><span className="status-badge todo">⏳ รอดำเนินการ</span></td>
+                  <td><span className="status-badge todo">รอดำเนินการ</span></td>
                   <td style={{ color: 'var(--gray-400)', fontStyle: 'italic' }}>[หมายเหตุ]</td>
                 </tr>
               ))}
@@ -147,16 +134,12 @@ export default function WeekPage({ weekId }) {
         </div>
       </div>
 
-      {/* ความประทับใจ */}
       <div className="card animate-fade-up delay-500">
         <div className="card-header">
-          <div className="card-header-icon">💬</div>
-          <div>
-            <div className="card-header-title">ความรู้สึกและความประทับใจ</div>
-          </div>
+          <div><div className="card-header-title">ความรู้สึกและความประทับใจ</div></div>
         </div>
         <div className="card-body">
-          <div className="activity-ph">[กรอกความรู้สึก ความประทับใจ หรือสิ่งที่อยากแชร์ในสัปดาห์นี้]</div>
+          <div className="activity-ph">[กรอกความรู้สึก ความประทับใจ หรือสิ่งที่อยากบันทึกในสัปดาห์นี้]</div>
         </div>
       </div>
     </div>

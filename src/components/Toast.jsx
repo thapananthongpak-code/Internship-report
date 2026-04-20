@@ -13,15 +13,12 @@ export function ToastProvider({ children }) {
     }, duration)
   }, [])
 
-  const icons = { success: '✅', info: 'ℹ️', error: '❌' }
-
   return (
     <ToastCtx.Provider value={addToast}>
       {children}
       <div className="toast-container">
         {toasts.map(t => (
           <div key={t.id} className={`toast ${t.type}`}>
-            <span className="toast-icon">{icons[t.type] ?? 'ℹ️'}</span>
             {t.msg}
           </div>
         ))}

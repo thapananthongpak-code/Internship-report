@@ -1,6 +1,6 @@
 const navItems = [
-  { id: 'home',    icon: '🏠', label: 'หน้าปก' },
-  { id: 'company', icon: '🏢', label: 'ข้อมูลบริษัท' },
+  { id: 'home',    label: 'หน้าปก' },
+  { id: 'company', label: 'ข้อมูลบริษัท' },
 ]
 
 const weeks = Array.from({ length: 7 }, (_, i) => ({
@@ -35,7 +35,6 @@ export default function Sidebar({ current, onNavigate, isOpen, onClose }) {
             className={`nav-link${current === item.id ? ' active' : ''}`}
             onClick={() => { onNavigate(item.id); onClose(); }}
           >
-            <span className="nav-link-icon">{item.icon}</span>
             {item.label}
           </button>
         ))}
@@ -47,7 +46,6 @@ export default function Sidebar({ current, onNavigate, isOpen, onClose }) {
             className={`nav-link${current === w.id ? ' active' : ''}`}
             onClick={() => { onNavigate(w.id); onClose(); }}
           >
-            <span className="nav-link-icon">📋</span>
             {w.label}
             <span className="nav-badge">{w.num}</span>
           </button>
@@ -58,7 +56,6 @@ export default function Sidebar({ current, onNavigate, isOpen, onClose }) {
           className={`nav-link${current === 'summary' ? ' active' : ''}`}
           onClick={() => { onNavigate('summary'); onClose(); }}
         >
-          <span className="nav-link-icon">📊</span>
           สรุปผลการฝึกงาน
         </button>
       </nav>
