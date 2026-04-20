@@ -1,17 +1,13 @@
 const navItems = [
-  { id: 'home', icon: '🏠', label: 'หน้าปก' },
+  { id: 'home',    icon: '🏠', label: 'หน้าปก' },
   { id: 'company', icon: '🏢', label: 'ข้อมูลบริษัท' },
 ]
 
-const weeks = [
-  { id: 'week1', label: 'สัปดาห์ที่ 1', date: 'ว/ด/ป' },
-  { id: 'week2', label: 'สัปดาห์ที่ 2', date: 'ว/ด/ป' },
-  { id: 'week3', label: 'สัปดาห์ที่ 3', date: 'ว/ด/ป' },
-  { id: 'week4', label: 'สัปดาห์ที่ 4', date: 'ว/ด/ป' },
-  { id: 'week5', label: 'สัปดาห์ที่ 5', date: 'ว/ด/ป' },
-  { id: 'week6', label: 'สัปดาห์ที่ 6', date: 'ว/ด/ป' },
-  { id: 'week7', label: 'สัปดาห์ที่ 7', date: 'ว/ด/ป' },
-]
+const weeks = Array.from({ length: 7 }, (_, i) => ({
+  id: `week${i + 1}`,
+  label: `สัปดาห์ที่ ${i + 1}`,
+  num: i + 1,
+}))
 
 export default function Sidebar({ current, onNavigate, isOpen, onClose }) {
   return (
@@ -45,7 +41,7 @@ export default function Sidebar({ current, onNavigate, isOpen, onClose }) {
         ))}
 
         <div className="nav-section-label">บันทึกรายสัปดาห์</div>
-        {weeks.map((w, i) => (
+        {weeks.map(w => (
           <button
             key={w.id}
             className={`nav-link${current === w.id ? ' active' : ''}`}
@@ -53,7 +49,7 @@ export default function Sidebar({ current, onNavigate, isOpen, onClose }) {
           >
             <span className="nav-link-icon">📋</span>
             {w.label}
-            <span className="nav-badge">{i + 1}</span>
+            <span className="nav-badge">{w.num}</span>
           </button>
         ))}
 
@@ -69,7 +65,7 @@ export default function Sidebar({ current, onNavigate, isOpen, onClose }) {
 
       <div className="sidebar-footer">
         ระยะเวลาฝึกงาน 7 สัปดาห์<br />
-        Sirisoft Co., Ltd. © 2025
+        <a href="https://sirisoft.co.th/" target="_blank" rel="noreferrer">sirisoft.co.th</a>
       </div>
     </aside>
   )
