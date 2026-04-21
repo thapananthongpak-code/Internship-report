@@ -6,7 +6,7 @@ import { useToast } from '../components/Toast'
 // ════════════════════════════════════════════
 const STATS = [
   { num: '7',  label: 'สัปดาห์' },
-  { num: '40', label: 'วันทำงาน' },
+  { num: '35', label: 'วันทำงาน' },
   { num: '–',  label: 'โปรเจกต์' },   // ← จำนวนโปรเจกต์
   { num: '–',  label: 'ทักษะใหม่' },  // ← จำนวนทักษะ
 ]
@@ -73,7 +73,7 @@ export default function SummaryPage() {
       <div className="cover-hero animate-scale-in">
         <span className="cover-tag">สรุปผลการฝึกงาน</span>
         <h1 className="cover-title">สรุปผลการฝึกประสบการณ์<br/>วิชาชีพ</h1>
-        <p className="cover-subtitle">บริษัท ศิริซอฟต์ จำกัด — ระยะเวลา 8 สัปดาห์</p>
+        <p className="cover-subtitle">บริษัท ศิริซอฟต์ จำกัด — ระยะเวลา 7 สัปดาห์</p>
         <div className="cover-divider"></div>
       </div>
 

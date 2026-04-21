@@ -15,7 +15,7 @@ export default function HomePage() {
             { label: 'รหัสนักศึกษา',    value: STUDENT.id },
             { label: 'สาขาวิชา',        value: STUDENT.major },
             { label: 'คณะ',             value: STUDENT.faculty },
-            { label: 'ระยะเวลาฝึกงาน', value: '8 สัปดาห์' },
+            { label: 'ระยะเวลาฝึกงาน', value: '7 สัปดาห์' },
             { label: 'ช่วงเวลา',        value: `${STUDENT.startDate} – ${STUDENT.endDate}` },
           ].map((item, i) => (
             <div key={i} className="cover-info-item">
@@ -54,7 +54,7 @@ export default function HomePage() {
               { label: 'คณะ',                  value: STUDENT.faculty },
               { label: 'มหาวิทยาลัย',          value: STUDENT.university, full: true },
               { label: 'อาจารย์ที่ปรึกษา',     value: STUDENT.advisor },
-              { label: 'ช่วงระยะเวลาฝึกงาน',  value: `${STUDENT.startDate} – ${STUDENT.endDate} (8 สัปดาห์)`, full: true },
+              { label: 'ช่วงระยะเวลาฝึกงาน',  value: `${STUDENT.startDate} – ${STUDENT.endDate} (7 สัปดาห์)`, full: true },
             ].map((f, i) => (
               <div key={i} className={`info-field${f.full ? ' full' : ''}`}>
                 <span className="field-label">{f.label}</span>

@@ -1,7 +1,7 @@
-const weeks = ['สัปดาห์ 1','สัปดาห์ 2','สัปดาห์ 3','สัปดาห์ 4','สัปดาห์ 5','สัปดาห์ 6','สัปดาห์ 7','สัปดาห์ 8']
+const weeks = ['สัปดาห์ 1','สัปดาห์ 2','สัปดาห์ 3','สัปดาห์ 4','สัปดาห์ 5','สัปดาห์ 6','สัปดาห์ 7']
 
 export default function WeekProgress({ currentWeek }) {
-  const pct = Math.round((currentWeek / 8) * 100)
+  const pct = Math.round((currentWeek / 7) * 100)
   return (
     <div className="week-progress animate-fade-in">
       <span className="week-progress-label">ความคืบหน้า</span>
