@@ -3,7 +3,7 @@ const navItems = [
   { id: 'company', label: 'ข้อมูลบริษัท' },
 ]
 
-const weeks = Array.from({ length: 7 }, (_, i) => ({
+const weeks = Array.from({ length: 8 }, (_, i) => ({
   id: `week${i + 1}`,
   label: `สัปดาห์ที่ ${i + 1}`,
   num: i + 1,
@@ -61,7 +61,7 @@ export default function Sidebar({ current, onNavigate, isOpen, onClose }) {
       </nav>
 
       <div className="sidebar-footer">
-        ระยะเวลาฝึกงาน 7 สัปดาห์<br />
+        ระยะเวลาฝึกงาน 8 สัปดาห์<br />
         <a href="https://sirisoft.co.th/" target="_blank" rel="noreferrer">sirisoft.co.th</a>
       </div>
     </aside>

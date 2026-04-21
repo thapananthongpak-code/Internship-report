@@ -18,6 +18,7 @@ const PAGE_META = {
   week5:   { title: 'สัปดาห์ที่ 5', subtitle: 'บันทึกการฝึกงาน' },
   week6:   { title: 'สัปดาห์ที่ 6', subtitle: 'บันทึกการฝึกงาน' },
   week7:   { title: 'สัปดาห์ที่ 7', subtitle: 'บันทึกการฝึกงาน' },
+  week8:   { title: 'สัปดาห์ที่ 8', subtitle: 'บันทึกการฝึกงาน' },
   summary: { title: 'สรุปผลการฝึกงาน', subtitle: 'ภาพรวมและข้อเสนอแนะ' },
 }
 

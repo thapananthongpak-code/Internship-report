@@ -13,6 +13,7 @@ const weekConfig = {
   week5: { num: 5, title: 'งานโปรเจกต์หลัก',          theme: 'ดำเนินงานโปรเจกต์ที่ได้รับมอบหมาย' },
   week6: { num: 6, title: 'ทดสอบและปรับปรุงงาน',       theme: 'QA, Testing และ Code Review' },
   week7: { num: 7, title: 'สรุปและส่งมอบงาน',          theme: 'ปิดงานและนำเสนอผลลัพธ์ต่อทีม' },
+  week8: { num: 8, title: 'สรุปและเตรียมรายงาน',       theme: 'จัดทำเอกสารรายงานและส่งมอบงานทั้งหมด' },
 }
 
 export default function WeekPage({ weekId }) {

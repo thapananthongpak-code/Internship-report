@@ -10,6 +10,7 @@ const SEARCH_INDEX = [
   { page: 'week5',   label: 'สัปดาห์ที่ 5',              keywords: 'สัปดาห์ 5 week กิจกรรม งาน ความรู้ ปัญหา' },
   { page: 'week6',   label: 'สัปดาห์ที่ 6',              keywords: 'สัปดาห์ 6 week กิจกรรม งาน ความรู้ ปัญหา' },
   { page: 'week7',   label: 'สัปดาห์ที่ 7',              keywords: 'สัปดาห์ 7 week กิจกรรม งาน ความรู้ ปัญหา' },
+  { page: 'week8',   label: 'สัปดาห์ที่ 8',              keywords: 'สัปดาห์ 8 week กิจกรรม งาน ความรู้ ปัญหา' },
   { page: 'summary', label: 'สรุปผลการฝึกงาน',           keywords: 'สรุป ผล ทักษะ ความประทับใจ ข้อเสนอแนะ บทสรุป' },
 ]
 
